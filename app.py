@@ -18,7 +18,7 @@ class API(FastAPI):
             request_count = load(f).get("request_count", 0)
 
 
-app = API(title="Calculator")
+app = API(title="Calcium")
 
 
 class InfoResponse(BaseModel):
