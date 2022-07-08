@@ -2,6 +2,7 @@ from contextlib import suppress
 from json import dump, load
 from time import perf_counter
 
+import uvicorn
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -66,3 +67,7 @@ async def invalid_input(request: Request, exception: InvalidValue) -> JSONRespon
 def shutdown() -> None:
     with open("./data.json", "w") as f:
         dump({"request_count": app.request_count}, f)
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=5000)
